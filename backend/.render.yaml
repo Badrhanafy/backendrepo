@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: schoolstrack
+    env: node
+    repo: https://github.com/badrhanafy/backendrepo
+    branch: master
+    plan: starter
+    buildCommand: npm install
+    startCommand: npm run start:dev
