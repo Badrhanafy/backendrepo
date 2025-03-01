@@ -4,25 +4,12 @@ import mysql from "mysql2"
 import cors from "cors"
 import path from "path";
 import { fileURLToPath } from "url";
-const bcrypt = require("bcryptjs");
+import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import { connect } from "http2";
 import { type } from "os";
 const app = express();
-const authenticateToken = (req, res, next) => {
-  const token = req.header('Authorization')?.replace('Bearer ', '')
-  if (!token) {
-    return res.status(401).json({ message: 'Access denied. No token provided.' });
-  }
- jwt.verify(token, 'thissvevehjvebvjehjb43r32r2fbf', (err, user) => {
-    if (err) {
-      return res.status(403).json({ message: 'Invalid token' });
-    }
-    req.user = user;
-    next(); 
-  });
-  
-};
+
 const PORT = 3999;
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
